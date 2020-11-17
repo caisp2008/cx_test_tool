@@ -1,0 +1,5 @@
+comlum:time,mem,cpu
+comlumTotal:time,sysmemleft,syscpu,totalpss,totalcpu
+app_info:[{"application_name":"酷狗唱唱","package_name":"com.kugou.android.ktvapp","location":"\/data\/user\/0\/com.kugou.android.ktvapp","version":"2.6.5"},{"application_name":"com.kugou.android.support.ktvapp","package_name":"com.kugou.android.support.ktvapp"}]
+device_info:{"phone_brand":"OPPO","phone_type":"OPPO R11s","sys_name":"R11s_11_A.42_191224","bootloader":"unknown","serial":"95be129","hardware":"qcom","android_vesion":"8.1.0","cpu_type":"AArch64 Processor rev 4 (aarch64)","cpu_num":8,"cpu_freq":1843200,"imei":"868898033409119","storage_size":"3.92吉字节","screen_high":2016,"screen_width":1080,"screen_desi":3,"sys_version_num":"OPM1.171019.011","mac":"02:00:00:00:00:00","carrieroperator":""}
+tips:MjAyMC0wMy0zMC0yMC01OC00MCUzQQ==

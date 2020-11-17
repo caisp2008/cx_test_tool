@@ -1,0 +1,249 @@
+  bash arg: -p
+  bash arg: com.kugou.android.ringtone
+  bash arg: --throttle
+  bash arg: 500
+  bash arg: -s
+  bash arg: 1000
+  bash arg: --ignore-crashes
+  bash arg: --ignore-timeouts
+  bash arg: --ignore-security-exceptions
+  bash arg: --ignore-native-crashes
+  bash arg: --monitor-native-crashes
+  bash arg: -v
+  bash arg: -v
+  bash arg: -v
+  bash arg: 100
+:Monkey: seed=1000 count=100
+:AllowPackage: com.kugou.android.ringtone
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Selecting main activities from category android.intent.category.LAUNCHER
+//   - NOT USING main activity com.meizu.flyme.alarmclock.DeskClock (from package com.android.alarmclock)
+//   - NOT USING main activity com.android.browser.BrowserActivity (from package com.android.browser)
+//   - NOT USING main activity com.android.dialer.DialtactsActivity (from package com.android.dialer)
+//   - NOT USING main activity com.android.mms.ui.ConversationList (from package com.android.mms)
+//   - NOT USING main activity com.android.settings.Settings (from package com.android.settings)
+//   - NOT USING main activity com.android.soundrecorder.MzRecorderActivity (from package com.android.soundrecorder)
+//   - NOT USING main activity com.meizu.flyme.launcher.Launcher (from package com.meizu.flyme.launcher)
+//   - NOT USING main activity com.meizu.flyme.update.SystemUpgradeListActivity (from package com.meizu.flyme.update)
+//   - NOT USING main activity com.meizu.media.camera.CameraLauncher (from package com.meizu.media.camera)
+//   - NOT USING main activity com.meizu.media.gallery.GalleryActivity (from package com.meizu.media.gallery)
+//   - NOT USING main activity com.meizu.flyme.appcenter.activitys.AppMainActivity (from package com.meizu.mstore)
+//   - NOT USING main activity com.achievo.vipshop.activity.LodingActivity (from package com.achievo.vipshop)
+//   - NOT USING main activity com.cmread.bplusc.bookshelf.promptMainActivity (from package com.andreader.prein)
+//   - NOT USING main activity com.android.email.activity.EmailActivity (from package com.android.email)
+//   - NOT USING main activity com.meizu.datamigration.capture.DataMigrationActivity (from package com.meizu.datamigration)
+//   - NOT USING main activity com.meizu.net.pedometer.ui.PedometerMainActivitys (from package com.meizu.net.pedometer)
+//   - NOT USING main activity com.meizu.flyme.notepaper.app.NotePaperActivity (from package com.meizu.notepaper)
+//   - NOT USING main activity com.android.providers.downloads.ui.DownloadActivity (from package com.android.providers.downloads.ui)
+//   - NOT USING main activity com.meizu.customizecenter.frame.activity.CustomizeCenterActivity (from package com.meizu.customizecenter)
+//   - NOT USING main activity com.meizu.feedback.activity.MainActivity (from package com.meizu.feedback)
+//   - NOT USING main activity com.meizu.flyme.filemanager.activity.HomeActivity (from package com.meizu.filemanager)
+//   - NOT USING main activity com.meizu.media.music.MusicActivity (from package com.meizu.media.music)
+//   - NOT USING main activity com.meizu.media.video.VideoMainActivity (from package com.meizu.media.video)
+//   - NOT USING main activity com.meizu.mznfcpay.homepage.HomeActivity (from package com.meizu.mznfcpay)
+//   - NOT USING main activity com.meizu.safe.SecurityMainActivity (from package com.meizu.safe)
+//   - NOT USING main activity com.meizu.voiceassistant.MainActivity (from package com.meizu.voiceassistant)
+//   - NOT USING main activity cmccwm.mobilemusic.ui.base.SplashActivity (from package cmccwm.mobilemusic)
+//   - NOT USING main activity com.mqunar.splash.SplashActivity (from package com.Qunar)
+//   - NOT USING main activity com.meizu.flyme.calendar.AllInOneActivity (from package com.android.calendar)
+//   - NOT USING main activity com.baidu.searchbox.SplashActivity (from package com.baidu.searchbox)
+//   - NOT USING main activity com.eg.android.AlipayGphone.AlipayLogin (from package com.eg.android.AlipayGphone)
+//   - NOT USING main activity com.meizu.store.newhome.NewHomeActivity (from package com.flyme.meizu.store)
+//   - NOT USING main activity com.flyme.videoclips.activity.HomeWeexActivity (from package com.flyme.videoclips)
+//   - NOT USING main activity com.iflytek.ringdiyclient.splash.SplashActivity (from package com.iflytek.ringdiyclient)
+//   - NOT USING main activity com.jf.lkrj.SplashActivity (from package com.jf.lkrj)
+//   - NOT USING main activity com.jingdong.app.mall.main.MainActivity (from package com.jingdong.app.mall)
+//   - NOT USING main activity com.kugou.android.app.splash.SplashActivity (from package com.kugou.android)
+//   - NOT USING main activity com.kugou.android.app.splash.SplashActivity (from package com.kugou.android.ktvapp)
+//   + Using main activity com.kugou.android.ringtone.activity.WecomeActivity (from package com.kugou.android.ringtone)
+//   - NOT USING main activity com.kugou.coolshot.splash.SplashActivity (from package com.kugou.coolshot)
+//   - NOT USING main activity com.kugou.cx.child.entry.EntryActivity (from package com.kugou.cx.child)
+//   - NOT USING main activity com.squareup.leakcanary.internal.DisplayLeakActivity (from package com.kugou.cx.child)
+//   - NOT USING main activity com.kugou.fanxing.splash.ui.CheckPermissionActivity (from package com.kugou.fanxing)
+//   - NOT USING main activity com.kugou.modulemonitor.main.nav.MonitorActivity (from package com.kugou.modulemonitor)
+//   - NOT USING main activity com.sing.client.activity.DummyActivity (from package com.kugou.moe)
+//   - NOT USING main activity com.kugou.shiqutouch.activity.StartupActivity (from package com.kugou.shiqutouch)
+//   - NOT USING main activity com.kugou.fanxing.splash.ui.SplashActivity (from package com.kugou.shortvideoapp)
+//   - NOT USING main activity com.kugou.testring.MainActivity (from package com.kugou.testring)
+//   - NOT USING main activity com.sanctpalace.game.MainActivity (from package com.meizu.compaign)
+//   - NOT USING main activity com.meizu.flyme.calculator.Calculator (from package com.meizu.flyme.calculator)
+//   - NOT USING main activity com.meizu.flyme.dsgame.MainActivity (from package com.meizu.flyme.dsgame)
+//   - NOT USING main activity com.meizu.flyme.gamecenter.activity.GameMainActivity (from package com.meizu.flyme.gamecenter)
+//   - NOT USING main activity com.meizu.flyme.toolbox.activity.ToolBoxActivity (from package com.meizu.flyme.toolbox)
+//   - NOT USING main activity com.meizu.flyme.wallet.activity.WalletTabActivity (from package com.meizu.flyme.wallet)
+//   - NOT USING main activity com.meizu.flyme.weather.modules.home.WeatherMainActivity (from package com.meizu.flyme.weather)
+//   - NOT USING main activity com.zhaoxitech.zxbook.splash.SplashActivity (from package com.meizu.media.ebook)
+//   - NOT USING main activity com.meizu.media.life.modules.smzdm.modules.splash.SplashActivity (from package com.meizu.media.life)
+//   - NOT USING main activity com.meizu.media.reader.ReaderMainActivity (from package com.meizu.media.reader)
+//   - NOT USING main activity com.netease.nr.biz.ad.newAd.AdActivity (from package com.netease.newsreader.activity)
+//   - NOT USING main activity com.pp.assistant.activity.MainActivity (from package com.pp.assistant)
+//   - NOT USING main activity com.meituan.android.pt.homepage.activity.Welcome (from package com.sankuai.meituan)
+//   - NOT USING main activity com.shuqi.activity.SplashActivity (from package com.shuqi.controller)
+//   - NOT USING main activity com.sina.weibo.SplashActivity (from package com.sina.weibo)
+//   - NOT USING main activity com.sing.client.activity.DummyActivity (from package com.sing.client)
+//   - NOT USING main activity com.ss.android.article.news.activity.MainActivity (from package com.ss.android.article.news)
+//   - NOT USING main activity com.ss.android.ugc.aweme.splash.SplashActivity (from package com.ss.android.ugc.aweme)
+//   - NOT USING main activity com.taobao.tao.welcome.Welcome (from package com.taobao.taobao)
+//   - NOT USING main activity com.tencent.mm.ui.LauncherUI (from package com.tencent.mm)
+//   - NOT USING main activity com.tencent.mobileqq.activity.SplashActivity (from package com.tencent.mobileqq)
+//   - NOT USING main activity com.tencent.qnet.ui.login.LoginActivity (from package com.tencent.qnet)
+//   - NOT USING main activity com.ximalaya.ting.android.host.activity.WelComeActivity (from package com.ximalaya.ting.android)
+//   - NOT USING main activity com.yscall.kulaidian.activity.main.SplashActivity (from package com.yscall.kulaidian)
+//   - NOT USING main activity iflytek.testTech.propertytool.activity.BootActivity (from package iflytek.testTech.propertytool)
+// Selecting main activities from category android.intent.category.MONKEY
+//   - NOT USING main activity com.android.settings.Settings$RunningServicesActivity (from package com.android.settings)
+//   - NOT USING main activity com.android.settings.Settings$StorageUseActivity (from package com.android.settings)
+//   - NOT USING main activity com.meizu.battery.BatteryMainActivity (from package com.meizu.battery)
+//   - NOT USING main activity com.meizu.flyme.launcher.Launcher (from package com.meizu.flyme.launcher)
+//   - NOT USING main activity com.meizu.backup.mvp.main.MainBackActivity (from package com.meizu.backup)
+//   - NOT USING main activity com.meizu.datamigration.backup.mvp.main.MainBackActivity (from package com.meizu.datamigration)
+//   - NOT USING main activity com.meizu.connectivitysettings.ConnectivitySettingsMonkeyActivity (from package com.meizu.connectivitysettings)
+// Seeded: 1000
+// Event percentages:
+//   0: 15.0%
+//   1: 10.0%
+//   2: 2.0%
+//   3: 15.0%
+//   4: -0.0%
+//   5: -0.0%
+//   6: 25.0%
+//   7: 15.0%
+//   8: 2.0%
+//   9: 2.0%
+//   10: 1.0%
+//   11: 13.0%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=com.kugou.android.ringtone/.activity.WecomeActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.kugou.android.ringtone/.activity.WecomeActivity } in package com.kugou.android.ringtone
+Sleeping for 500 milliseconds
+    // activityResuming(com.kugou.android.ringtone)
+:Sending Touch (ACTION_DOWN): 0:(876.0,1924.0)
+:Sending Touch (ACTION_MOVE): 0:(894.49677,1912.2272)
+:Sending Touch (ACTION_UP): 0:(902.46747,1901.4387)
+Sleeping for 500 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(172.0,503.0)
+:Sending Touch (ACTION_UP): 0:(173.65752,503.0058)
+Sleeping for 500 milliseconds
+    // Allowing start of Intent { cmp=com.kugou.android.ringtone/.activity.KGTopicRingtoneActivity } in package com.kugou.android.ringtone
+:Sending Key (ACTION_DOWN): 272    // KEYCODE_MEDIA_SKIP_FORWARD
+:Sending Key (ACTION_UP): 272    // KEYCODE_MEDIA_SKIP_FORWARD
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 22    // KEYCODE_DPAD_RIGHT
+:Sending Key (ACTION_UP): 22    // KEYCODE_DPAD_RIGHT
+Sleeping for 500 milliseconds
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=com.kugou.android.ringtone/.activity.WecomeActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.kugou.android.ringtone/.activity.WecomeActivity } in package com.kugou.android.ringtone
+Sleeping for 500 milliseconds
+    // activityResuming(com.kugou.android.ringtone)
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,2.0)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,-4.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,-4.0)
+:Sending Touch (ACTION_DOWN): 0:(387.0,257.0)
+:Sending Touch (ACTION_UP): 0:(390.03946,255.43834)
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 24    // KEYCODE_VOLUME_UP
+:Sending Key (ACTION_UP): 24    // KEYCODE_VOLUME_UP
+Sleeping for 500 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(466.0,1120.0)
+:Sending Touch (ACTION_MOVE): 0:(464.23273,1125.9459)
+:Sending Touch (ACTION_MOVE): 0:(462.14853,1127.792)
+:Sending Touch (ACTION_MOVE): 0:(456.7589,1129.4667)
+:Sending Touch (ACTION_MOVE): 0:(450.5281,1131.6671)
+:Sending Touch (ACTION_MOVE): 0:(444.98022,1133.6898)
+:Sending Touch (ACTION_MOVE): 0:(442.59714,1136.1787)
+:Sending Touch (ACTION_MOVE): 0:(435.71768,1138.9115)
+:Sending Touch (ACTION_MOVE): 0:(432.95685,1140.5555)
+:Sending Touch (ACTION_MOVE): 0:(432.21716,1146.4098)
+:Sending Touch (ACTION_UP): 0:(425.2828,1151.216)
+Sleeping for 500 milliseconds
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-1.0)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,-2.0)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,2.0)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,2.0)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,-4.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,2.0)
+:Sending Key (ACTION_DOWN): 19    // KEYCODE_DPAD_UP
+:Sending Key (ACTION_UP): 19    // KEYCODE_DPAD_UP
+Sleeping for 500 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(5.0,1738.0)
+:Sending Touch (ACTION_UP): 0:(15.715435,1737.2615)
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 23    // KEYCODE_DPAD_CENTER
+:Sending Key (ACTION_UP): 23    // KEYCODE_DPAD_CENTER
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 19    // KEYCODE_DPAD_UP
+:Sending Key (ACTION_UP): 19    // KEYCODE_DPAD_UP
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 82    // KEYCODE_MENU
+:Sending Key (ACTION_UP): 82    // KEYCODE_MENU
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 23    // KEYCODE_DPAD_CENTER
+:Sending Key (ACTION_UP): 23    // KEYCODE_DPAD_CENTER
+Sleeping for 500 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(376.0,935.0)
+:Sending Touch (ACTION_MOVE): 0:(382.85376,954.3407)
+:Sending Touch (ACTION_MOVE): 0:(392.18277,959.64276)
+:Sending Touch (ACTION_UP): 0:(396.78586,960.71216)
+Sleeping for 500 milliseconds
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,-1.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-4.0)
+:Sending Trackball (ACTION_MOVE): 0:(-2.0,-4.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,3.0)
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,1.0)
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,2.0)
+:Sending Key (ACTION_DOWN): 23    // KEYCODE_DPAD_CENTER
+:Sending Key (ACTION_UP): 23    // KEYCODE_DPAD_CENTER
+Sleeping for 500 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(247.0,1372.0)
+:Sending Touch (ACTION_UP): 0:(246.3602,1374.824)
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 19    // KEYCODE_DPAD_UP
+:Sending Key (ACTION_UP): 19    // KEYCODE_DPAD_UP
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 22    // KEYCODE_DPAD_RIGHT
+:Sending Key (ACTION_UP): 22    // KEYCODE_DPAD_RIGHT
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 20    // KEYCODE_DPAD_DOWN
+:Sending Key (ACTION_UP): 20    // KEYCODE_DPAD_DOWN
+Sleeping for 500 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(1059.0,1232.0)
+:Sending Touch (ACTION_UP): 0:(1061.2198,1238.0178)
+Sleeping for 500 milliseconds
+:Sending Key (ACTION_DOWN): 21    // KEYCODE_DPAD_LEFT
+:Sending Key (ACTION_UP): 21    // KEYCODE_DPAD_LEFT
+Sleeping for 500 milliseconds
+:Sending Touch (ACTION_DOWN): 0:(511.0,102.0)
+:Sending Touch (ACTION_UP): 0:(488.05945,103.39146)
+Sleeping for 500 milliseconds
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,-2.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,-4.0)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,-4.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,-2.0)
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,-1.0)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(-2.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-1.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,3.0)
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,0.0)
+Events injected: 100
+:Sending rotation degree=0, persist=false
+:Dropped: keys=0 pointers=0 trackballs=0 flips=0 rotations=0
+## Network stats: elapsed time=12933ms (0ms mobile, 0ms wifi, 12933ms not connected)
+// Monkey finished

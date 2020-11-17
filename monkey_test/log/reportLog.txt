@@ -1,0 +1,127 @@
+2019-12-14 13:24:24.551100
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+2019-12-14 13:27:13.867617
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+2019-12-14 13:46:44.970917
+// Monkey finished
+2019-12-14 18:37:44.128728
+// Monkey finished
+2019-12-14 18:39:01.076558
+// Monkey finished
+2019-12-14 18:41:44.127881
+// Monkey finished
+2019-12-14 18:42:16.406916
+// Monkey finished
+2019-12-14 19:03:17.460620
+// Monkey finished
+2019-12-14 20:50:09.243877
+// Monkey finished
+2019-12-15 11:14:57.134197
+// Monkey finished
+2019-12-15 11:42:15.140175
+// Monkey finished
+2019-12-15 11:55:10.921411
+// Monkey finished
+2019-12-15 12:02:13.574240
+// Monkey finished
+2019-12-15 12:47:10.050080
+// Monkey finished
+2019-12-15 12:49:07.209103
+// Monkey finished
+2019-12-15 12:52:29.551808
+// Monkey finished
+2019-12-15 12:59:51.032758
+// Monkey finished
+2019-12-16 22:02:52.818456
+// Monkey finished
+2019-12-16 22:03:28.175963
+// Monkey finished
+2019-12-16 22:37:19.413418
+// Monkey finished
+2019-12-16 23:03:39.674961
+// Monkey finished
+2020-02-19 10:06:07.454128
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+2020-02-20 14:48:16.231031
+// Monkey finished
+2020-02-20 15:13:39.122910
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+Got IOException performing flipjava.io.IOException: write failed: EINVAL (Invalid argument)
+2020-02-26 10:28:02.388114
+// Monkey finished
+2020-03-11 17:09:54.345039
+// Monkey finished

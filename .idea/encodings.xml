@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Folder/APP_monkey_folder/log/determine_log.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Folder/APP_xn_auto_folder/log" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dist/Folder/APP_monkey_folder/log/determine_log.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dist/Folder/APP_xn_auto_folder/log" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dist/mytkinter/log/log_new.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/dist/mytkinter/结果存放.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/mytkinter/log/log_new.txt" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/mytkinter/结果存放.txt" charset="GBK" />
+  </component>
+</project>

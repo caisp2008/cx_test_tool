@@ -1,0 +1,46 @@
+##包名
+###packageName: com.kugou.android.ringtone
+##packageName: com.kugou.android
+##
+###进程名
+##process:
+##  process1: com.kugou.android.support
+##  process2: com.kugou.android
+## #  process1: com.kugou.android
+##  # process2: com.kugou.android.support
+##
+##  #process3: com.kugou.android.ringtone:vshow
+##
+###测试场景
+##scene:
+##  scene1: 唱首页
+##  scene2: 录制
+###  scene3: 视频照片上传
+##  #scene4: 视频上传
+###  scene5: 铃声串烧
+
+#包名
+packageName: com.kugou.shiqutouch
+
+#进程名
+process:
+  process1: com.kugou.shiqutouch
+  process2: com.kugou.shiqutouch:float
+  process3: com.kugou.shiqutouch:support
+
+#无需采集数据场景，如进入APP点掉权限，登录等
+no_need_collect_data_script:
+  scene1: startApp.air
+
+#测试场景
+scene:
+  scene1: 启动首页
+  scene2: 视频提取
+  scene3: 视频播放
+  scene4: 高潮
+  scene5: 榜单
+  scene6: 观看直播
+
+
+
+

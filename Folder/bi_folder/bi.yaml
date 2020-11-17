@@ -1,0 +1,23 @@
+
+#上线前bi（上线前核心统计指标）
+online_bi_umeng: ["a=16063", "a=14220", "a=14192","a=8310","a=8309","a=16062","a=16072","16061","a=16059","a=16064","a=15471","a=15126"]
+
+#新版bi
+#new_bi_umeng: ["20010","20011","20012"]
+
+
+#new_bi_umeng: ["a=20099", "a=20090", "a=20049","a=20104","a=20017","a=16375","a=16376","a=16377", "a=20048"]
+
+
+#新版bi
+#new_bi_umeng: ["key value line : a=16912", "key value line : a=16913", "key value line : a=16914" ,"key value line : a=16915", "key value line : a=16916", "key value line : a=16917", "key value line : a=16924"]
+
+
+
+#新版bi
+new_bi_umeng: ["key value line","key value line : a=16065", "key value line : a=8345", "key value line : a=12960","key value line : a=12962","key value line : a=8310","key value line : a=8307","key value line : a=8308","key value line : a=8309","key value line : a=16059"]
+
+#新版bi
+#new_bi_umeng: ["key value line : a=13660", "key value line : a=13659", "key value line : a=13658" ,"key value line : a=14484", "key value line : a=14485", "key value line : a=14222"]
+
+

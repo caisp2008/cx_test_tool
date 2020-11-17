@@ -1,0 +1,8 @@
+#包名
+packageName: com.kugou.android.ringtone
+
+#进程名
+process:
+  process1: com.kugou.android.ringtone
+  process2: com.kugou.android.ringtone:player
+  process3: com.kugou.android.ringtone:vshow
