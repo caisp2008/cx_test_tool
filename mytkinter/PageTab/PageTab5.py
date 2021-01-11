@@ -165,7 +165,7 @@ def start_APP_auto_test():
                 insert_text('第'+str(n) + '轮测试：' + temp_script + '测试出错，进行脚本重试\n')
                 # 定义测试失败的时候，test_result = 0 ，后续在失败的地方输入测试结果进行标红
                 air_result
-                insert_text('第' + str(n) + '轮测试：' + temp_no_data_script + '脚本重试失败，请查看失败截图\n')
+                insert_text('第' + str(n) + '轮测试：' + temp_script + '脚本重试失败，请查看失败截图\n')
 
                 test_result = 0
 
@@ -409,10 +409,10 @@ def get_handtest_log_info(excel_path,n,process_info,temp_script,lens_process,len
         print("--------------------------------")
 
         # 获取handTest的txt文件路径
-        path_handTest_txt = path_handTest_log + '\\'
-        # path_handTest_txt = path_handTest_log + '\handTest\\'
+        # path_handTest_txt = path_handTest_log + '\\'
+        path_handTest_txt = path_handTest_log + '\handTest\\'
 
-
+        print('handTest的txt文件路径是。。。。。。。'+path_handTest_txt)
         once_pss_lines = open(path_handTest_txt + pss_path).readlines()
 
         for line in range(2, len(once_pss_lines)):
