@@ -139,7 +139,9 @@ def start_APP_auto_test():
             else:
                 screenshot('第'+ str(n) + '轮测试' + temp_no_data_script)
                 # print(temp_no_data_script+'测试出错',file = f_air_log,end='\n')
-                insert_text('第'+ str(n) + '轮测试：'+temp_no_data_script + '测试出错\n')
+                insert_text('第'+ str(n) + '轮测试：'+temp_no_data_script + '测试出错，进行重新跑脚本\n')
+                air_result
+                insert_text('第' + str(n) + '轮测试：' + temp_no_data_script + '脚本重试失败，请查看失败截图\n')
 
 
             # print('测试脚本' + 'temp_no_data_script' + '测试完成了，干掉APP')
@@ -160,8 +162,11 @@ def start_APP_auto_test():
                 test_result = 1
             else:
                 screenshot('第'+ str(n) + '轮测试' + temp_no_data_script)
-                insert_text('第'+str(n) + '轮测试：' + temp_script + '测试出错\n')
+                insert_text('第'+str(n) + '轮测试：' + temp_script + '测试出错，进行脚本重试\n')
                 # 定义测试失败的时候，test_result = 0 ，后续在失败的地方输入测试结果进行标红
+                air_result
+                insert_text('第' + str(n) + '轮测试：' + temp_no_data_script + '脚本重试失败，请查看失败截图\n')
+
                 test_result = 0
 
             print('操作完成，现在等待30S进入稳定态')
@@ -377,6 +382,7 @@ def open_course():
 def get_handtest_log_info(excel_path,n,process_info,temp_script,lens_process,len_process,average_process,all_average_pss,all_average_cpu,test_result):
     # 获取存放handTest日志路径
     path_handTest_log = get_base_path() + 'Folder\performance_function_test_H_folder\log'
+    print('存放handTest日志路径在这里。。。。。。。。。。。'+path_handTest_log)
     # 将手机上的handtest日志拷贝到电脑上来
     cmd_cpu = "adb pull /storage/emulated/0/AndroidPropertyTool4/handTest " + path_handTest_log
     os.system(cmd_cpu)
@@ -403,7 +409,9 @@ def get_handtest_log_info(excel_path,n,process_info,temp_script,lens_process,len
         print("--------------------------------")
 
         # 获取handTest的txt文件路径
-        path_handTest_txt = path_handTest_log + '\handTest\\'
+        path_handTest_txt = path_handTest_log + '\\'
+        # path_handTest_txt = path_handTest_log + '\handTest\\'
+
 
         once_pss_lines = open(path_handTest_txt + pss_path).readlines()
 

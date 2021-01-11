@@ -47,7 +47,7 @@ init_tab9(tab9)
 #-------------------tab5----------------------------------
 tab5 = ttk.Frame(tabControl) # Add a second tab
 tabControl.add(tab5, text=' APP性能自动化测试 ') # Make second tab visible
-
+74890988199235684412
 tabControl.pack(expand=1, fill="both") # Pack布局
 #对tab1进行布局
 init_tab5(tab5)
