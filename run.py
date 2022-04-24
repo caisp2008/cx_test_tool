@@ -52,23 +52,20 @@ tabControl.pack(expand=1, fill="both") # Pack布局
 #对tab1进行布局
 init_tab5(tab5)
 
-
-
-
 #-------------------tab6----------------------------------
-tab6 = ttk.Frame(tabControl) # Add a second tab
-tabControl.add(tab6, text=' monkey测试 ') # Make second tab visible
-
-tabControl.pack(expand=1, fill="both") # Pack布局
-#对tab1进行布局
-init_tab6(tab6)
+# tab6 = ttk.Frame(tabControl) # Add a second tab
+# tabControl.add(tab6, text=' monkey测试 ') # Make second tab visible
+#
+# tabControl.pack(expand=1, fill="both") # Pack布局
+# #对tab1进行布局
+# init_tab6(tab6)
 
 #-------------------tab7--------------------------------------------------------------------------------------
-tab7 = ttk.Frame(tabControl) # Create a tab
-tabControl.add(tab7, text=' 流量测试 ') # Add the tab
-tabControl.pack(expand=1, fill="both") # Pack布局
-#对tab1进行布局
-init_tab7(tab7)
+# tab7 = ttk.Frame(tabControl) # Create a tab
+# tabControl.add(tab7, text=' 流量测试 ') # Add the tab
+# tabControl.pack(expand=1, fill="both") # Pack布局
+# #对tab1进行布局
+# init_tab7(tab7)
 
 #-------------------tab8--------------------------------------------------------------------------------------
 # tab8 = ttk.Frame(tabControl) # Create a tab
@@ -85,14 +82,6 @@ init_tab7(tab7)
 # init_tab9(tab9)
 
 
-#-------------------tab11--------------------------------------------------------------------------------------
-# tab11 = ttk.Frame(tabControl) # Create a tab
-# tabControl.add(tab11, text=' 浮浮雷达性能采集 ') # Add the tab
-# tabControl.pack(expand=1, fill="both") # Pack布局
-# #对tab1进行布局
-# init_tab11(tab11)
-
-
 #-------------------tab4----------------------------------
 tab4 = ttk.Frame(tabControl) # Add a second tab
 tabControl.add(tab4, text=' 统计测试 ') # Make second tab visible
@@ -101,12 +90,19 @@ tabControl.pack(expand=1, fill="both") # Pack布局
 init_tab4(tab4)
 
 
-#-------------------tab3----------------------------------
+# -------------------tab3----------------------------------
 # tab3 = ttk.Frame(tabControl) # Add a second tab
 # tabControl.add(tab3, text=' 接口测试 ') # Make second tab visible
 #
 # tabControl.pack(expand=1, fill="both") # Pack布局
 # #对tab1进行布局
 # init_tab3(tab3)
+
+#-------------------tab11--------------------------------------------------------------------------------------
+tab11 = ttk.Frame(tabControl) # Create a tab
+tabControl.add(tab11, text=' 酷狗音乐性能指标采集 ') # Add the tab
+tabControl.pack(expand=1, fill="both") # Pack布局
+#对tab1进行布局
+init_tab11(tab11)
 
 win.mainloop() # Start GUI

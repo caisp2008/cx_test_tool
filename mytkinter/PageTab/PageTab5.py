@@ -64,7 +64,7 @@ def init_tab5(tab_page):
               command=lambda: open_world(path_error_video)).grid(column=3, row=6, sticky='W', padx=20,
                                                             pady=20)
 
-    text_monkey_info = tk.Text(monty, width=125, height=16, font=("Arial", 12))
+    text_monkey_info = tk.Text(monty, width=125, height=23, font=("Arial", 12))
     text_monkey_info.grid(row=8, column=0, sticky='W', columnspan=7, padx=10, pady=10)
 
 

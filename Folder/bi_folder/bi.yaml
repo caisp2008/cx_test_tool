@@ -4,20 +4,25 @@ online_bi_umeng: ["a=16063", "a=14220", "a=14192","a=8310","a=8309","a=16062","a
 
 #新版bi
 #new_bi_umeng: ["20010","20011","20012"]
-
-
 #new_bi_umeng: ["a=20099", "a=20090", "a=20049","a=20104","a=20017","a=16375","a=16376","a=16377", "a=20048"]
-
 
 #新版bi
 #new_bi_umeng: ["key value line : a=16912", "key value line : a=16913", "key value line : a=16914" ,"key value line : a=16915", "key value line : a=16916", "key value line : a=16917", "key value line : a=16924"]
 
-
-
 #新版bi
-new_bi_umeng: ["key value line","key value line : a=16065", "key value line : a=8345", "key value line : a=12960","key value line : a=12962","key value line : a=8310","key value line : a=8307","key value line : a=8308","key value line : a=8309","key value line : a=16059"]
+#new_bi_umeng: ["key value line","key value line : a=16065", "key value line : a=8345", "key value line : a=12960","key value line : a=12962","key value line : a=8310","key value line : a=8307","key value line : a=8308","key value line : a=8309","key value line : a=16059"]
 
 #新版bi
 #new_bi_umeng: ["key value line : a=13660", "key value line : a=13659", "key value line : a=13658" ,"key value line : a=14484", "key value line : a=14485", "key value line : a=14222"]
 
+#new_bi_umeng: ["burone-boot"]
 
+#新版本统计
+new_bi_umeng: ["AbnormalPauseTracker","40333","15256"]
+
+#多种条件结合的统计
+multiple_conditions_statistics: ["key value line : a=3800","svar1=界面右滑"]
+
+[ mod:SEA-AL10 error_info: city:null para1:2 fo: type:40333 sys:10 uuid:2253b6fa9e1569d94950380f9e22d91e reqid:679457959 uid:0 datetime:0 para:1 province:null svar2: vip_type:0 svar1: moontype:0 net:1 gitversion:63c16b9 ver:11154 package:1 os:1005 content_id:0 Kgsign:1b35ebf9f5eda2d16d248dc16b358d03 state_1:0 state_3:0 state_2:0 imei:321664189935436265180219569114117164709 error_code:-2 sdk:29 m_type:0 channelid:201 hwm:SEA-AL10 position_id:1 md5:cf8e8ae8b21ea2b80e4aed64727cacaf ]
+
+    {"ver":"11154","mod":"SEA-AL10","package":1,"os":"1005","Kgsign":"0a787ffac6e45c52389906d2ffc1790d","type":"42228","sys":"10","uuid":"2253b6fa9e1569d94950380f9e22d91e","uid":0,"vip_type":"0","imei":"321664189935436265180219569114117164709","moontype":"0","state":"1","sdk":"29","net":"1","m_type":"0","gitversion":"63c16b9","channelid":"201","md5":"cf8e8ae8b21ea2b80e4aed64727cacaf"}619	24	3	1649685935	1	0	65530	0

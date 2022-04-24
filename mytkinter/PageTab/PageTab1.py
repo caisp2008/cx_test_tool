@@ -29,11 +29,9 @@ def init_tab1(tab_page):
               command=lambda: open_world(path_package)).grid(column=0, row=4, sticky='W', padx=20,
                                                              pady=10)
 
-    tk.Button(monty, text='点击安装测试包', font=("Arial", 12), width=30, height=2, command=install_package).grid(column=1,
-                                                                                                           row=4,
-                                                                                                           sticky='W',
-                                                                                                           padx=20,
-                                                                                                           pady=10)
+    tk.Button(monty, text='点击安装安装测试包', font=("Arial", 12), width=30, height=2, command=lambda: install_package("adb install ")).grid(column=1, row=4, sticky='W',padx=20,pady=10)
+    tk.Button(monty, text='点击覆盖安装测试包', font=("Arial", 12), width=30, height=2, command=lambda: install_package("adb install -r ")).grid(column=1, row=5, sticky='W',padx=20,pady=10)
+    tk.Button(monty, text='清除当前包缓存', font=("Arial", 12), width=30, height=2, command=get_clear_package_data).grid(column=1, row=6, sticky='W',padx=20,pady=10)
 
     tk.Button(monty, text='点击查看性能测试报告_总模板', font=("Arial", 11), width=30, height=2, command=open_report).grid(column=1, row=7,
                                                                                                     sticky='W', padx=20,
@@ -73,6 +71,7 @@ def set_device_packagename(devpackage):
     text_device_packagename.delete(1.0,END)
     text_device_packagename.insert(1.0,devpackage)
 
+#获取包名方法
 def getpackagename():
     pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
     package = subprocess.Popen("adb shell dumpsys window | findstr mCurrentFocus", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).stdout.read()
@@ -84,6 +83,7 @@ def getpackagename():
     if len(packagename) > 0:
         print(packagename)
         set_device_packagename(packagename)
+        return packagename
     else:
         tk.messagebox.showerror(title='出错了！', message='获取包名失败')
 
@@ -94,6 +94,7 @@ def set_device_activityname(devactivity):
     text_device_activityname.delete(1.0,END)
     text_device_activityname.insert(1.0,devactivity)
 
+#获取activity的方法
 def getactivity():
     pattern = re.compile(r"[a-zA-Z0-9\.]+/.[a-zA-Z0-9\.]+")
     package = subprocess.Popen("adb shell dumpsys window | findstr  mFocusedActivity", shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).stdout.read()
@@ -101,8 +102,15 @@ def getactivity():
     activityname = pattern.findall(package)[0].split('/')[1]
     set_device_activityname(activityname)
 
-    # print(activity)
-    # return activity
+#清除当前页面APP的缓存方法
+def get_clear_package_data():
+    # clear_package_data = subprocess.Popen("adb shell  pm clear "+str(getpackagename), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).stdout.read()
+    # print(clear_package_data)
+    package_name = str(getpackagename())
+    cmd = f'adb shell  pm clear {package_name}'
+    print(cmd)
+    os.popen(cmd)
+
 
 # 截图函数
 def screenshot():
@@ -187,19 +195,19 @@ def open_report():
     path = os.path.abspath(path)  # 获取当前脚本所在的路径
     os.startfile(path)
 
-def install_package_tab():
+def install_package_tab(adb_install_package):
     file_dir = get_base_path() + 'Folder\APP_xn_auto_folder\package'
     for root, dirs, files in os.walk(file_dir):
         print(files)  # 当前路径下所有非目录子文件
         print(dirs)  # 当前路径下所有子目录
         file_package = file_dir + '\\' + files[0]
-        cmd = "adb install " + file_package
+        cmd = adb_install_package + file_package
         print("运行脚本是：" + cmd)
         os.system(cmd)
 
 #多线程安装包
-def install_package():
-    th = threading.Thread(target=install_package_tab)
+def install_package(adb_installpackage):
+    th = threading.Thread(target=install_package_tab,args=(adb_installpackage,))
     th.setDaemon(True)  # 守护线程
     th.start()
 

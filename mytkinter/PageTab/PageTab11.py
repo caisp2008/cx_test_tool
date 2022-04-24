@@ -1,261 +1,277 @@
 # -*- coding: utf-8 -*-
-import shutil
 import threading
 import tkinter as tk # imports
-from tkinter import ttk
-import os,platform
-import subprocess
-import re
+from tkinter import ttk, END
 import time
+import re
+import csv
+import sys
+from numpy import *
+sys.path.append("..")
+from file_util import *
 
-from openpyxl import load_workbook
+global projectid,path_report,path_yaml
+projectid=1
+path_report=get_base_path() + 'Folder\APP_monkey_folder\\report'
+path_yaml = get_base_path() + 'Folder\APP_monkey_folder\yaml '
 
-# from performance_function_test.changchang.changchang_get_data import mem,cpu,get_adb_data_info
-# from performance_function_test.leida.leida_get_data import adb_leida_all
-
-global new_excel_path
-new_excel_path = '..\performance_function_test\changchang\酷狗唱唱APP性能测试报告\酷狗唱唱__手机端app性能测试结果__写入模板.xlsx'
+global run_times
+run_times=1000
 
 def init_tab11(tab_page):
-    global text_device_info,text_adb_info
+    global text_monkey_info,text_device_info,text_averagedata_info
     monty = ttk.LabelFrame(tab_page, text=' ')
     monty.grid(column=0, row=0, padx=20, pady=20)
+    #点击开始采集指标控件
+    tk.Button(monty, text='点击开始：酷狗音乐APP性能测试 ', font=("Arial", 11), width=45, height=1,command=run_performance_indicators).grid(column=0, row=0, sticky='W', padx=20, pady=10)
+    #点击开始计算平均值
+    tk.Button(monty, text='点击开始：计算平均值 ', font=("Arial", 11), width=45, height=1,
+              command=run_start_get_averge).grid(column=1, row=0, sticky='W', padx=20, pady=10)
+    tk.Button(monty, text='点击结束：计算平均值 ', font=("Arial", 11), width=45, height=1,
+              command=end_get_averge).grid(column=1, row=1, sticky='W', padx=20, pady=10)
+    #展示实时数据文本框
+    text_device_info = tk.Text(monty, width=70, height=25, font=("Arial", 12))
+    text_device_info.grid(column=0, row=2, sticky='W', padx=20, pady=10)
 
-    tk.Button(monty, text='点击复制测试结果 ', font=("Arial", 11), width=20, height=1, command=creat_leida_excel).grid(column=0, row=0,columnspan=2,
-                                                                                                  sticky='W', padx=10)
-    tk.Button(monty, text='点击打开实时性能工具 ', font=("Arial", 11), width=20, height=1, command=openTools).grid(
-        column=2, row=0, columnspan=2,
-        sticky='W', padx=10)
-
-    tk.Label(monty, text="第一次测试", font=("Arial", 11), width=10, height=2).grid(column=0,row=1, sticky='W', padx=20)
-    tk.Label(monty, text="    场景1：", font=("Arial", 11), width=10, height=2).grid(column=1,row=1,sticky='W')
-    switchscrBtn = tk.Button(monty, text='点击开始 ', fg = 'black',font=("Arial", 11), width=13, height=1 ,command =lambda: run_test(1,1))
-    switchscrBtn.grid(column=2, row=1, sticky='W',padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1 , command =lambda: get_adb_kugou_stop(4,2,'第一次测试',1,1)).grid(column=3, row=1,sticky='W',padx=10)
-
-    tk.Label(monty, text="                        场景2：", font=("Arial", 11), width=20, height=2).grid(column=4, row=1, sticky='W')
-    switchscrBtn = tk.Button(monty, text='点击开始 ', fg='black',font=("Arial", 11), width=13, height=1,command =lambda: run_test(1,2))
-    switchscrBtn.grid(column=5, row=1, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1 , command =lambda: get_adb_kugou_stop(4,12,'第一次测试',1,2)).grid(column=6, row=1, sticky='W', padx=10)
-
-    tk.Label(monty, text="    场景3：", font=("Arial", 11), width=10, height=2).grid(column=1,row=3,sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(1,3)).grid(column=2, row=3, sticky='W',padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,22,'第一次测试',1,3)).grid(column=3, row=3,sticky='W',padx=10)
-
-    tk.Label(monty, text="                        场景4：", font=("Arial", 11), width=20, height=2).grid(column=4, row=3, sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(1,4)).grid(column=5, row=3, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,32,'第一次测试',1,4)).grid(column=6, row=3, sticky='W', padx=10)
-
-    tk.Label(monty, text="    场景5：", font=("Arial", 11), width=10, height=2).grid(column=1, row=4, sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(1,5)).grid(column=2, row=4, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,42,'第一次测试',1,5)).grid(column=3, row=4, sticky='W', padx=10)
+    # 展示平均值文本数据
+    text_averagedata_info = tk.Text(monty, width=50, height=25, font=("Arial", 12))
+    text_averagedata_info.grid(column=1, row=2, sticky='W', padx=20, pady=10)
 
 
-    tk.Label(monty, text="                        场景6：", font=("Arial", 11), width=20, height=2).grid(column=4, row=4,sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1, command=lambda: run_test(2, 6)).grid(column=5, row=4, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command=lambda: get_adb_kugou_stop(4, 52, '第一次测试', 2, 6)).grid(column=6, row=4, sticky='W', padx=10)
-    tk.Label(monty, text="          ", font=("Arial", 11), width=20, height=2).grid(column=4, row=5, sticky='W')
+#采集内存数据方法
+def get_memory(package_name, phone_id=''):
+        phone_name = ''
+        total_mem = ''
+        if phone_id:
+            phone_name = f" -s {phone_id}"
+        cmd = f'adb{phone_name} shell dumpsys meminfo {package_name}'
+        contents = os.popen(cmd).read()
+        if 'TOTAL:' in contents:
+            total_mem = re.findall(r'TOTAL:\s+(\d+)', contents, re.MULTILINE)
+        elif 'TOTAL PSS:' in contents:
+            total_mem = re.findall(r'TOTAL PSS:\s+(\d+)', contents, re.MULTILINE)
+        elif 'com.kugou.android.message' in contents:
+            total_mem = re.findall(r'(\d+\,\d+)K: com.kugou.android \(pid', contents, re.MULTILINE)
+            total_mem = total_mem[3] if len(total_mem) > 4 else total_mem[0]
+            total_mem = ["".join(total_mem.split(','))]
+        if total_mem:
+            result = eval('int(total_mem[0])/1024')
+            return format(result, '.2f')
+        else:
+            return 0
 
+#获取手机设备方法
+def get_devices():
+        cmd = f'adb devices'
+        contents = os.popen(cmd).read()
+        devices_list = re.findall(r'(\w+)\s+device$', contents, re.MULTILINE)
+        return devices_list
 
-
-    tk.Label(monty, text="第二次测试", font=("Arial", 11), width=10, height=2).grid(column=0, row=6, sticky='W', padx=20)
-    tk.Label(monty, text="    场景1：", font=("Arial", 11), width=10, height=2).grid(column=1, row=6, sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(2,1)).grid(column=2, row=6, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,2,'第二次测试',2,1)).grid(column=3, row=6, sticky='W', padx=10)
-
-    tk.Label(monty, text="                        场景2：", font=("Arial", 11), width=20, height=2).grid(column=4, row=6,
-                                                                                                      sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(2,2)).grid(column=5, row=6, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,12,'第二次测试',2,2)).grid(column=6, row=6, sticky='W', padx=10)
-
-    tk.Label(monty, text="    场景3：", font=("Arial", 11), width=10, height=2).grid(column=1, row=7, sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(2,3)).grid(column=2, row=7, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,22,'第二次测试',2,3)).grid(column=3, row=7, sticky='W', padx=10)
-
-    tk.Label(monty, text="                        场景4：", font=("Arial", 11), width=20, height=2).grid(column=4, row=7,
-                                                                                                      sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(2,4)).grid(column=5, row=7, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,32,'第二次测试',2,4)).grid(column=6, row=7, sticky='W', padx=10)
-
-    tk.Label(monty, text="    场景5：", font=("Arial", 11), width=10, height=2).grid(column=1, row=8, sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(2,5)).grid(column=2, row=8, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,42,'第二次测试',2,5)).grid(column=3, row=8, sticky='W', padx=10)
-
-    tk.Label(monty, text="                        场景6：", font=("Arial", 11), width=20, height=2).grid(column=4, row=8,  sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1, command=lambda: run_test(2, 6)).grid(column=5, row=8, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1, command=lambda: get_adb_kugou_stop(4, 52, '第二次测试', 2, 6)).grid(column=6, row=8, sticky='W', padx=10)
-
-    tk.Label(monty, text="          ", font=("Arial", 11), width=20, height=2).grid(column=4, row=9,
-                                                                                    sticky='W')
-
-
-
-    tk.Label(monty, text="第三次测试", font=("Arial", 11), width=10, height=2).grid(column=0, row=11, sticky='W', padx=20)
-    tk.Label(monty, text="    场景1：", font=("Arial", 11), width=10, height=2).grid(column=1, row=11, sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(3,1)).grid(column=2, row=11, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,2,'第三次测试',3,1)).grid(column=3, row=11, sticky='W', padx=10)
-
-    tk.Label(monty, text="                        场景2：", font=("Arial", 11), width=20, height=2).grid(column=4, row=11,
-                                                                                                      sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(3,2)).grid(column=5, row=11, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,12,'第三次测试',3,2)).grid(column=6, row=11, sticky='W', padx=10)
-
-    tk.Label(monty, text="    场景3：", font=("Arial", 11), width=10, height=2).grid(column=1, row=12, sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(3,3)).grid(column=2, row=12, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,22,'第三次测试',3,3)).grid(column=3, row=12, sticky='W', padx=10)
-
-    tk.Label(monty, text="                        场景4：", font=("Arial", 11), width=20, height=2).grid(column=4, row=12,
-                                                                                                      sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(3,4)).grid(column=5, row=12, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,32,'第三次测试',3,4)).grid(column=6, row=12, sticky='W', padx=10)
-
-    tk.Label(monty, text="    场景5：", font=("Arial", 11), width=10, height=2).grid(column=1, row=13, sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1,command =lambda: run_test(3,5)).grid(column=2, row=13, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command =lambda: get_adb_kugou_stop(4,42,'第三次测试',3,5)).grid(column=3, row=13, sticky='W', padx=10)
-
-
-
-    tk.Label(monty, text="                        场景6：", font=("Arial", 11), width=20, height=2).grid(column=4, row=13,sticky='W')
-    tk.Button(monty, text='点击开始 ', font=("Arial", 11), width=13, height=1, command=lambda: run_test(2, 6)).grid(column=5, row=13, sticky='W', padx=10)
-    tk.Button(monty, text='点击结束 ', font=("Arial", 11), width=13, height=1,command=lambda: get_adb_kugou_stop(4,52, '第三次测试', 2, 6)).grid(column=6, row=13, sticky='W', padx=10)
-    tk.Label(monty, text="          ", font=("Arial", 11), width=20, height=2).grid(column=4, row=14, sticky='W')
-
-    text_adb_info = tk.Text(monty, width=70, height=5, font=("Arial", 12))
-    text_adb_info.grid(row=16, column=0, sticky='W', columnspan=7, padx=20, pady=10)
-
-    tk.Button(monty, text='点击查看测试结果 ', font=("Arial", 11), width=20, height=1 ,command=openReport).grid(column=5, row=16, sticky='W',columnspan=2, padx=10,pady=15)
-
-    tk.Label(monty, text="          ", font=("Arial", 11), width=20, height=2).grid(column=4, row=17,
-                                                                                    sticky='W')
-
-def openReport():
-    path_report = '..\performance_function_test\leida\浮浮雷达APP性能测试报告'
-    path = os.path.abspath(path_report)  # 获取当前脚本所在的路径
-    os.startfile(path)
-
-def openTools():
-    path_report = '..\Tools\performance_tools'
-    path = os.path.abspath(path_report)  # 获取当前脚本所在的路径
-    os.startfile(path)
-
-def set_text_test():
-    global get_adb_kugou_isrun
-    get_adb_kugou_isrun = True
-
-    new_path = '..\mytkinter\log\log_new.txt'
-    path_log = os.path.abspath(new_path)
-    f = open(path_log, 'w')
-
-    while get_adb_kugou_isrun:
-        adb_leida_all(f)
-    f.close()
-
-def run_test(n,y):
-    th = threading.Thread(target=set_text_test)
+#多线程
+def run_get_devices():
+    th = threading.Thread(target=get_performance_indicators(get_devices))
     th.setDaemon(True)  # 守护线程
     th.start()
-    insert_text(str(get_time()) + '第 '+ str(n) + ' 次测试__'+'场景 '+str(y)+' 测试开始了\n')
 
 
-# def run_test(switchscrBtn,n,y):
-#     if  switchscrBtn['text'] == '点击开始':
-#         switchscrBtn['text'] = '测试开始了'
-#         switchscrBtn['fg']= ('blue')
-#
-#         th = threading.Thread(target=set_text_test)
-#         th.setDaemon(True)  # 守护线程
-#         th.start()
-#         insert_text(str(get_time()) + '第 '+ str(n) + ' 次测试__'+'场景 '+str(y)+' 测试开始了\n')
-#
-#     else:
-#         switchscrBtn['text'] = '点击开始'
+#获取CPU数据方法
+def get_cpu():
+        pid_front = ['']
+        pid_backend = ['']
+        # 获取pid
+        cmd_ps = 'adb shell ps -ef'
+        cmd_ps_low = 'adb shell ps'
+        try:
+            contents_pid = os.popen(cmd_ps).read()
+            if 'kugou' not in contents_pid:
+                contents_pid = os.popen(cmd_ps_low).read()
+            pid_front = re.findall(r'\s+(\d+).*com\.kugou\.android(?!\.)', contents_pid, re.MULTILINE)
+            pid_backend = re.findall(r'\s+(\d+).*com\.kugou\.android.support', contents_pid, re.MULTILINE)
+            # print(pid_front, pid_backend)
+            # 根据pid筛选前后台进程
+            if pid_front and pid_backend:
+                cmd_top = 'adb shell top -n 1'
+                contents_cpu = os.popen(cmd_top).read()
+                # 前台
+                cpu_front = re.findall(f"{pid_front[0]}.*\w\s(\d+\.\d+).*com\.kugou\.and", contents_cpu, re.MULTILINE)
+                cpu_front = cpu_front if cpu_front else re.findall(f"{pid_front[0]}.*(\d+%).*com\.kugou\.and",
+                                                                   contents_cpu,
+                                                                   re.MULTILINE)
+                # 后台
+                cpu_backend = re.findall(f"{pid_backend[0]}.*\w\s(\d+\.\d+).*com\.kugou\.and", contents_cpu,
+                                         re.MULTILINE)
+                cpu_backend = cpu_backend if cpu_backend else re.findall(f"{pid_backend[0]}.*(\d+%).*com\.kugou\.and",
+                                                                         contents_cpu, re.MULTILINE)
+                # print(cpu_front, cpu_backend)
+                return [cpu_front[0] if cpu_front else 0, cpu_backend[0] if cpu_backend else 0]
+            else:
+                return [0, 0]
+        except Exception as e:
+            return [0, 0]
 
+global is_running
+#采集性能方法
+def get_performance_indicators(package_name):
+    # -*- encoding=utf-8 -*-
+    global is_running
+    is_running = False
+    text_device_info.delete(1.0, END) #清除性能数据
+    package_front = "com.kugou.android"  # 前台进程名字
+    package_backend = "com.kugou.android.support"  # 后台进程名字
+    duration = int(sys.argv[1]) if len(sys.argv) > 2 else 10  # 单位：分钟
+    devices = get_devices()  # 获取机型
+    csv_header = ["time", "前台Mem", "后台Mem", "前台CPU", "后台CPU"]
 
-def get_adb_kugou_stop(begin_row,begin_col,sheet_name,n,y):
-    global get_adb_kugou_isrun
-    get_adb_kugou_isrun = False
-    time.sleep(10)
-    write_leida_excel(new_excel_path,begin_row,begin_col,sheet_name)
-    insert_text(str(get_time()) + '第 ' + str(n) + ' 次测试__' + '场景 ' + str(y) + ' 测试结束了\n')
+    print(f"当前机型deviceID：{devices}")
+    set_device_info(f"当前机型deviceID：{devices}\n")
+    with open('kugou_cpu_mem.csv', 'a+') as k:
+        k_csv = csv.writer(k)
+        k_csv.writerow(devices)
+        k_csv.writerow(csv_header)
+    if len(devices) >= 2:
+        print(f"more than one device:{devices}")
+    else:
+        for item in range(duration * 60):
+            if is_running == True:
+                break
+            record_time = time.strftime('%H:%M:%S', time.localtime())  # 时间
+            mem_data_front = get_memory(package_front)  # 前台进程内存
+            time.sleep(0.5)
+            mem_data_backend = get_memory(package_backend)  # 后台进程内存
+            cpu_data = get_cpu()
+            data=f"time:{record_time}      前台Mem: {mem_data_front}     后台Mem: {mem_data_backend}     前台CPU: {cpu_data[0]}    后台cpu: {cpu_data[1]} \n"
+            # print(f"time:{record_time}      前台Mem: {mem_data_front}     后台Mem: {mem_data_backend}     "
+            #       f"前台CPU: {cpu_data[0]}    后台cpu: {cpu_data[1]}")
+            # print(data)
+            set_device_info(data)
+            time.sleep(0.5)
+            with open('kugou_cpu_mem.csv', 'a+', newline='') as k:
+                k_csv = csv.writer(k)
+                k_csv.writerow([record_time, mem_data_front, mem_data_backend, cpu_data[0], cpu_data[1]])
 
+#开始采集性能平均值方法
+global Reception_list_mem,backstage_list_mem,Reception_list_CPU,Backstage_list_CPU
+def get_data_average(package_name):
+    # -*- encoding=utf-8 -*-
+    global is_running,Reception_list_mem,backstage_list_mem,Reception_list_CPU,Backstage_list_CPU
+    #清楚平均值数据
+    text_averagedata_info.delete(1.0, END)
+    is_running = True
+    package_front = "com.kugou.android"  # 前台进程名字
+    package_backend = "com.kugou.android.support"  # 后台进程名字
+    duration = int(sys.argv[1]) if len(sys.argv) > 2 else 10  # 单位：分钟
+    devices = get_devices()  # 获取机型
+    csv_header = ["time", "前台Mem", "后台Mem", "前台CPU", "后台CPU"]
 
-def creat_leida_excel():
-    import time
-    global new_excel_path
-    model_excel_path = os.path.abspath('..\performance_function_test\leida\浮浮雷达APP性能测试报告\浮浮雷达__手机端app性能测试结果__模板.xlsx')
+    print(f"当前机型deviceID：{devices}")
+    # set_device_info(f"当前机型deviceID：{devices}\n")
+    with open('kugou_cpu_mem.csv', 'a+') as k:
+        k_csv = csv.writer(k)
+        k_csv.writerow(devices)
+        k_csv.writerow(csv_header)
+    if len(devices) >= 2:
+        print(f"more than one device:{devices}")
+    else:
+        Reception_list_mem = []
+        backstage_list_mem = []
+        Reception_list_CPU = []
+        Backstage_list_CPU = []
+        for item in range(duration * 60):
+            if is_running == False :
+                break
+            record_time = time.strftime('%H:%M:%S', time.localtime())  # 时间
+            mem_data_front = get_memory(package_front)  # 前台进程内存
+            time.sleep(0.5)
+            mem_data_backend = get_memory(package_backend)  # 后台进程内存
+            cpu_data = get_cpu()
+            data=f"time:{record_time}      前台Mem: {mem_data_front}     后台Mem: {mem_data_backend}     前台CPU: {cpu_data[0]}    后台cpu: {cpu_data[1]} "
+            set_device_info(data+"\n")
+            # print("mem_data_front是这个："+mem_data_front)
+            #把内存存到内存列表中
+            Reception_list_mem.append(mem_data_front)
+            backstage_list_mem.append(mem_data_backend)
+            Reception_list_CPU.append(cpu_data[0])
+            Backstage_list_CPU.append(cpu_data[1])
+            print("前台内存列表" + str(Reception_list_mem))
+            print("后台内存列表" + str(backstage_list_mem))
+            print("前台CPU列表" + str(Reception_list_CPU))
+            print("后台CPU列表" + str(Backstage_list_CPU))
+            time.sleep(0.5)
+            with open('kugou_cpu_mem.csv', 'a+', newline='') as k:
+                k_csv = csv.writer(k)
+                k_csv.writerow([record_time, mem_data_front, mem_data_backend, cpu_data[0], cpu_data[1]])
 
-    time_report = time.strftime("%Y-%m-%d-%H_%M_%S", time.localtime(time.time()))
-    excel_result = shutil.copy(model_excel_path, u'..\performance_function_test\leida\浮浮雷达APP性能测试报告\浮浮雷达__手机端app性能测试报告__' + str(time_report) + '.xlsx')
+#打印性能指标多线程
+def run_performance_indicators():
+    package_name = 'com.kugou.android'
+    th = threading.Thread(target=get_performance_indicators,args=(package_name,))
+    th.setDaemon(True)  # 守护线程
+    th.start()
 
+#开始计算平均值多线程
+def run_start_get_averge():
+    # 开始采集需要计算平均值的数据
+    # print("开始计算以下数据平均值")
+    set_device_info("\n——————————————开始计算数据平均值————————————————\n")
+    set_averagedata_info('开始计算数据平均值\n')
+    package_name = 'com.kugou.android'
+    th = threading.Thread(target=get_data_average, args=(package_name,))
+    th.setDaemon(True)  # 守护线程
+    th.start()
 
-    new_excel_path=os.path.abspath(excel_result)
-    # 删除文件
-    if os.path.exists(new_excel_path):
-        os.unlink(new_excel_path)
-    # 复制并重命名新文件
-    shutil.copy(model_excel_path, new_excel_path)
-    # time_log = time.strftime(" %Y_%m_%d_%H_%M_%S:   ", time.localtime(time.time()))
-    insert_text(str(get_time())+'创建测试结果excele成功\n')
-    # return new_excel_path
+#结束计算平均值多线程
+def end_get_averge():
+    # 开始采集需要计算平均值的数据
+    #定义is_running全局变量
+    global is_running,Reception_list_mem,backstage_list_mem,Reception_list_CPU,Backstage_list_CPU
+    set_averagedata_info('结束计算数据平均值\n')
+    is_running = False
+    #计算前台内存的平均值
+    b = len(Reception_list_mem)
+    sum = 0
+    for i in Reception_list_mem:
+        sum = sum + float(i)
+    print(sum / b)
+    #打印前台内存list
+    set_averagedata_info(str(Reception_list_mem)+"\n")
+    set_averagedata_info("前台内存平均值是：" + str(float(sum / b)) + "\n\n" )
 
-def get_time():
-    time_log = time.strftime(" %Y_%m_%d_%H_%M_%S:   ", time.localtime(time.time()))
-    return time_log
+    # 计算后台内存的平均值
+    b = len(backstage_list_mem)
+    sum = 0
+    for i in backstage_list_mem:
+        sum = sum + float(i)
+    print(sum / b)
+    # 打印后台内存list
+    set_averagedata_info(str(backstage_list_mem)+"\n")
+    set_averagedata_info("后台内存平均值是：" + str(float(sum / b)) + "\n\n")
 
-def write_data_to_excel(new_txt_path,excel_path,begin_row, begin_col,sheet_name):
-    '''
-    :param old_txt_path:  新的的txt数据值路径
-    :param excel_path: excel文件绝对路径
-    :param begin_row: 写入数据开始行号，最小为1
-    :param begin_col: 写入数据开始列数，最小为1
-    :return:
-    '''
-    file_txt = open(new_txt_path)
-    lines = file_txt.readlines()
+    # 计算前台CPU的平均值
+    b = len(Reception_list_CPU)
+    sum = 0
+    for i in Reception_list_CPU:
+        sum = sum + float(i)
+    print(sum / b)
+    # 打印前台CPU list
+    set_averagedata_info(str(Reception_list_CPU)+"\n")
+    set_averagedata_info("前台CPU平均值是：" + str(float(sum / b)) + "\n\n")
 
-    if (begin_row <= 1):
-        begin_row = 1
-    if (begin_col <= 1):
-        begin_col = 1
+    # 计算后台CPU的平均值
+    b = len(Backstage_list_CPU)
+    sum = 0
+    for i in Backstage_list_CPU:
+        sum = sum + float(i)
+    print(sum / b)
+    # 打印前台CPU list
+    set_averagedata_info(str(Backstage_list_CPU) + "\n")
+    set_averagedata_info("后台CPU平均值是：" + str(float(sum / b)) + "\n\n")
 
-    workbook = load_workbook(excel_path)
-    workbook.guess_types = True  # 猜测格式类型
-    sheet = workbook.get_sheet_by_name(sheet_name)
+#把性能数据打印出来
+def set_device_info(data):
+    # text_device_info.delete(1.0, END)
+    text_device_info.insert(tk.END,data)
 
-
-    if (len(lines) == 0):
-        print("没有数据.......")
-        return
-
-
-    for i in range(len(lines)):
-        list = (lines[i].split(','))
-        if (len(list) == 0):
-            continue
-
-        for j in range(len(list)):
-            # print('temp的数据 ' + list[j])
-            sheet.cell(i + begin_row, j + begin_col, float(list[j]))
-    workbook.save(excel_path)
-    workbook.close()
-    file_txt.close()
-    return lines,sheet
-
-def write_leida_excel(new_excel_path,begin_row,begin_col,sheet_name):
-    new_txt_path = os.path.abspath('..\mytkinter\log\log_new.txt')
-
-    excel_path = new_excel_path
-    write_data_to_excel(new_txt_path, excel_path, begin_row, begin_col,sheet_name)
-
-
-    print('写入成功')
-
-
-#往txt中插入数据
-def insert_text(message):
-    if(message==None):
-        message = ""
-    text_adb_info.insert(1.0,message)
-
-if __name__ == "__main__":
-    get_data_info()
+#把平均值数据打印出来
+def set_averagedata_info(data):
+    # text_device_info.delete(1.0, END)
+    text_averagedata_info.insert(tk.END,data)
